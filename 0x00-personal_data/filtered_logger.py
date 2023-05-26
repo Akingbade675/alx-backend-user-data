@@ -2,8 +2,15 @@
 '''Implementing the Logging facility for Python'''
 
 
+from typing import List
+import re
 import logging
-from typings import List
+from os import environ
+import mysql.connector
+
+
+# # PII fields to be redacted
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
 def filter_datum(
